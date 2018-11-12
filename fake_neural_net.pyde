@@ -6,10 +6,12 @@ def setup():
 def draw():
     background(255)
 
+    #parameters to play with. distortion = randomness = max possible spacing of points.
     randomseed = 60
     distortion = 600
     pointnumber = 20
     
+    #visual parameters. 
     pointsize = 4
     strokeweight = 0.5
     fill_alpha = 255
@@ -21,6 +23,7 @@ def draw():
     ypoints = [int(random(200,height-200))]
     ellipse(xpoints[0], ypoints[0], pointsize, pointsize)
     
+    #first for loop to generate all of the points.
     for i in range(pointnumber):
         x1 = xpoints[-1]
         y1 = ypoints[-1]
@@ -33,7 +36,8 @@ def draw():
         xpoints.append(x2)
         ypoints.append(y2)
         ellipse(x2,y2,pointsize, pointsize)
-        
+    
+    #second for loop to drawn lines between every point.
     dups = []
     for xpoint1, ypoint1 in zip(xpoints, ypoints):
         for xpoint2, ypoint2 in zip(xpoints[1:], ypoints[1:]):
